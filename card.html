@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>fetch the data and design the card</title>
+        <style>
+            #body {
+                    background-color: currentColor;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap:26px;
+                    row-gap: 32px;
+                    column-gap: 23px;
+                    
+                    
+                  }
+                    
+                  
+            .container{
+                      background-color:white;
+                      height:348px;
+                      width: 387px;
+                    
+    
+                    
+                  }
+                 /* .header{
+                    text-align: center;
+                    border-bottom: 5px solid lightgoldenrodyellow;
+                    color: yellow;
+                    margin-top: 17px;
+                      
+                  }*/
+                  .content{
+                      display:flex;
+                      flex-direction:column;
+                      gap:4px;
+                      padding:16px;
+                      color:black;
+                      margin-top: 176px;
+                  }
+                  .img{
+                    position: relative;
+                    bottom: 314px;
+                    left:112px;
+                    border-radius: 50%;
+                    height: 119px;
+                    width: 175px;
+
+                  }
+
+            
+        </style>
+
+    </head>
+    <body id="body">
+    
+            <!--
+                <div class="container">
+                <div class="header"> card</div>
+    
+                <div class="content">
+                    <span>
+                    <label>hai</label>:<label>value</label>
+                    </span><br>
+                    <span>
+                    <label>name</label>:<label>saran</label>
+                </span>
+                </div>
+                </div>-->
+                
+                <script>
+                    fetch("https://api.publicapis.org/entries",{method:"get"})
+                .then((response)=>response.json())
+                .then((res)=> 
+                { 
+                    console.log(res)
+                    
+                    res.entries.forEach((element) => {
+                        
+                    var container=document.createElement("div");
+                    container.className="container";
+                    var img=document.createElement("img")
+                    img.className="img";
+                    img.src="flower.jpg";
+            
+                    /*var header=document.createElement("div");
+                    header.className="header";*/
+                    var content=document.createElement("div");
+                    content.className="content";
+                    
+                    var span1=document.createElement("span");
+                    var label1=document.createElement("label");
+                    label1.append("API:");
+                    var label2=document.createElement("label");
+                    label2.append(element.API);
+                    span1.append(label1,label2);
+
+
+                   var span2=document.createElement("span");
+                    var label3=document.createElement("label");
+                    label3.append("Auth:");
+                    var label4=document.createElement("label");
+                    label4.append(element.Auth);
+                    span2.append(label3,label4);
+
+                    var span3=document.createElement("span");
+                    var label3=document.createElement("label");
+                    label3.append("Category:");
+                    var label4=document.createElement("label");
+                    label4.append(element.Category);
+                    span3.append(label3,label4);
+
+                    var span4=document.createElement("span");
+                    var label3=document.createElement("label");
+                    label3.append("Cors:");
+                    var label4=document.createElement("label");
+                    label4.append(element.Cors);
+                    span4.append(label3,label4);
+
+                    var span5=document.createElement("span");
+                    var label3=document.createElement("label");
+                    label3.append("Description:");
+                    var label4=document.createElement("label");
+                    label4.append(element.Description);
+                    span5.append(label3,label4);
+                    
+                    var span6=document.createElement("span");
+                    var label3=document.createElement("label");
+                    label3.append("HTTPS:");
+                    var label4=document.createElement("label");
+                    label4.append(element.HTTPS);
+                    span6.append(label3,label4);
+                    
+
+                    var span7=document.createElement("span");
+                    var label3=document.createElement("label");
+                    label3.append("Link:");
+                    var label4=document.createElement("label");
+                    label4.append(element.Link);
+                    span7.append(label3,label4);
+                    
+                    
+                    
+                    
+
+                    content.append(span1);
+                   content.append(span2);
+                    content.append(span3);
+                    content.append(span4);
+                    content.append(span5);
+                    content.append(span6);
+                    content.append(span7);
+
+                   /* header.append("card");*/
+                    container.append(content);
+                    container.append(img);
+
+
+                    var body=document.getElementById("body");
+                    body.append(container);
+                })
+            })
+                    </script>
+                
+            
+               
+
+    </body>
+</html>
+
